@@ -1,0 +1,22 @@
+{
+    "name": "Yogla для начинающих",
+    "description": "Набор упражнений для тех кто только начал практиковать йогу.",
+    "asanas": [
+        {
+            "titleAsan": "Собака мордой вниз",
+            "descriptionAsan": "Адхо Мукха Шванасана относится к позам йоги, снимающим усталость, возвращающим потерянную энергию. Она особенно полезна для бегунов, отдыхающих после забега.",
+            "imageAsan": "https://s.hanuman.ru/files/imagecache/center_thumbnail_full/mukha_shvanasana_01_0.JPG",
+            "iconAsan": "https://image.flaticon.com/icons/svg/84/84717.svg",
+            "voiceAsan": "voice.mp3",
+            "delayAsan": "10000"
+        },
+        {
+            "titleAsan": "БХАРАДВАДЖАСАНА II",
+            "descriptionAsan": "Бхарадваджасана II относится к упражнениям йоги для «среднего» уровня. Она развивает гибкость позвоночника, коленей и плеч и только для людей с эластичным позвоночником она не очень эффективна.",
+            "imageAsan": "https://s.hanuman.ru/files/imagecache/center_thumbnail_full/II.jpg",
+            "iconAsan": "https://image.flaticon.com/icons/svg/84/84717.svg",
+            "voiceAsan": "voice.mp3",
+            "delayAsan": "5000"
+        }
+    ]
+}
