@@ -1,11 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-import AsanCard from 'components/AsanCard';
+import AsansCardList from 'components/AsansCardList';
 
-import AsansData from '../../data/asansData.json';
+let AppWrap = styled.div`
+    font-family: "Comfortaa"
+`
 
-export default function App(props) {
+function App(props) {
     return (
-        <AsanCard></AsanCard>
+        <AppWrap>
+            <AsansCardList />
+        </AppWrap>
     )
 }
+
+export default App;
