@@ -1,5 +1,26 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+let AsanCardWrap = styled.div`
+    width: 100%;
+    max-width: 250px;
+`;
+
+let AsanLabel = styled.p`
+    font-weight: bold;
+    font-size: 18px;
+`;
+
+let AsanDescription = styled.p`
+    font-weight: light;
+    font-size: 16px;
+`;
+
+let AsanComplexity = styled.div`
+    color: ${props => props.theme.complexity[props.complexity].color};
+    background-color: ${props => props.theme.complexity[props.complexity].backgroundColor}
+`
 
 class AsanCard extends Component {
     static propTypes = {
@@ -17,10 +38,20 @@ class AsanCard extends Component {
             delayAsan: PropTypes.number.isRequired
         }))
     };
-    
+
     render() {
+        let {
+            label,
+            description,
+            complexity
+        } = this.props;
+
         return (
-            <div>Asan Card</div>
+            <AsanCardWrap>
+                <AsanLabel>{ label }</AsanLabel>
+                <AsanDescription>{ description }</AsanDescription>
+                <AsanComplexity complexity={complexity}>{ complexity }</AsanComplexity>
+            </AsanCardWrap>
         );
     }
 }

@@ -3,7 +3,7 @@
         "id": 1,
         "label": "Yogla для начинающих",
         "description": "Набор упражнений для тех кто только начал практиковать йогу.",
-        "complexity": "hard",
+        "complexity": "light",
         "totalTime": 15000,
         "asanas": [
             {
