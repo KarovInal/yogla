@@ -1,9 +1,10 @@
 [
     {
-        "name": "Yogla для начинающих",
+        "id": 1,
+        "label": "Yogla для начинающих",
         "description": "Набор упражнений для тех кто только начал практиковать йогу.",
         "complexity": "hard",
-        "totalTime": "15000",
+        "totalTime": 15000,
         "asanas": [
             {
                 "titleAsan": "Собака мордой вниз",
@@ -11,7 +12,7 @@
                 "imageAsan": "https://s.hanuman.ru/files/imagecache/center_thumbnail_full/mukha_shvanasana_01_0.JPG",
                 "iconAsan": "https://image.flaticon.com/icons/svg/84/84717.svg",
                 "voiceAsan": "voice.mp3",
-                "delayAsan": "10000"
+                "delayAsan": 10000
             },
             {
                 "titleAsan": "БХАРАДВАДЖАСАНА II",
@@ -19,7 +20,7 @@
                 "imageAsan": "https://s.hanuman.ru/files/imagecache/center_thumbnail_full/II.jpg",
                 "iconAsan": "https://image.flaticon.com/icons/svg/84/84717.svg",
                 "voiceAsan": "voice.mp3",
-                "delayAsan": "5000"
+                "delayAsan": 5000
             }
         ]
     }
