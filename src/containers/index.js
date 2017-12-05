@@ -4,10 +4,13 @@ import styled from 'styled-components';
 
 import AsansData from '../../data/asansData.json';
 
+let AppContainer = styled.div`
+`
+
 export default function App(props) {
     return (
-        <div>
+        <AppContainer>
             <AsansPlayer {...AsansData}/>
-        </div>
+        </AppContainer>
     )
 }

@@ -3,10 +3,17 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 let AsansContainer = styled.div`
+    font-family: "Comfortaa";
+    background-color: rgba(0,0,0,.1);
+    position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 200px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 `;
 
 let AsansCard = styled.div`
@@ -39,14 +46,19 @@ export default class AsansPlayer extends Component {
             })
         ).isRequired
     }
+    
+    state = {
+        isDisplay: true
+    }
 
     render() {
+        if(!this.state.isDisplay) return null;
+
         let {
             name,
             description,
             asanas
         } = this.props;
-
         return (
             <AsansContainer>
                 <AsansCard>
