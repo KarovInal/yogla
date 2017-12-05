@@ -9,9 +9,12 @@ module.exports = {
 
   resolve: {
     extensions: [".js", ".jsx", ".json"],
-    modules: ['node_modules', 'src']
+    modules: ['node_modules', 'src'],
+    alias: {
+      Data: __dirname + '/data/'
+    }
   },
-  
+
   output: {
     path: __dirname + '/dist/',
     filename: 'js/[name].build.js'
