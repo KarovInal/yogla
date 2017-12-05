@@ -1,15 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
-import styled from 'styled-components';
-
-import './style.css';
-
-let Yogla = styled.h1`
-  font-family: sans-serif;
-  color: black;
-`;
+import App from './containers';
 
 render(
-  <Yogla>Yogla.io</Yogla>,
+  <App />,
   document.getElementById('app')
 );

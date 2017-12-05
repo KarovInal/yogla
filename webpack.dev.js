@@ -6,11 +6,22 @@ module.exports = {
   entry: {
     app: './src/app.js'
   },
+
+  resolve: {
+    extensions: [".js", ".jsx", ".json"],
+    modules: ['node_modules', 'src'],
+    alias: {
+      Data: __dirname + '/data/'
+    }
+  },
+
   output: {
     path: __dirname + '/dist/',
     filename: 'js/[name].build.js'
   },
+
   devtool: 'source-map',
+
   module: {
     rules: [
       {
@@ -18,6 +29,7 @@ module.exports = {
         use: 'babel-loader',
         exclude: /node_modules/
       },
+
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/,
         use: [
@@ -29,20 +41,27 @@ module.exports = {
           }
         ]
       },
+
       {
         test: /\.css$/,
         use: extractCSS.extract({
           use: 'css-loader',
           fallback: 'style-loader'
         })
-      }
+      },
+
+      {
+        test: /\.json$/,
+        use: 'json-loader'
+      },
     ]
   },
+
   plugins: [
     extractCSS
   ],
+
   devServer: {
-    historyApiFallback: true,
     contentBase: "./dist",
     port: "3000",
     open: true

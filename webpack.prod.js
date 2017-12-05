@@ -8,6 +8,14 @@ module.exports = {
   entry: {
     app: './src/app.js'
   },
+
+  resolve: {
+    extensions: [".js", ".jsx", ".json"],
+    modules: ['node_modules', 'src'],
+    alias: {
+      Data: __dirname + '/data/'
+    }
+  },
   
   output: {
     filename: 'js/[name].min.js',
