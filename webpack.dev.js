@@ -6,6 +6,11 @@ module.exports = {
   entry: {
     app: './src/app.js'
   },
+
+  resolve: {
+    extensions: [".js", ".jsx", ".json"],
+    modules: ['node_modules', 'src']
+  },
   
   output: {
     path: __dirname + '/dist/',
@@ -54,7 +59,6 @@ module.exports = {
   ],
 
   devServer: {
-    historyApiFallback: true,
     contentBase: "./dist",
     port: "3000",
     open: true
