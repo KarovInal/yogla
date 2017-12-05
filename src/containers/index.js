@@ -1,16 +1,11 @@
 import React from 'react';
-import AsansPlayer from 'components/AsansPlayer';
 import styled from 'styled-components';
+import AsanCard from 'components/AsanCard';
 
 import AsansData from '../../data/asansData.json';
 
-let AppContainer = styled.div`
-`
-
 export default function App(props) {
     return (
-        <AppContainer>
-            <AsansPlayer {...AsansData}/>
-        </AppContainer>
+        <AsanCard></AsanCard>
     )
 }
