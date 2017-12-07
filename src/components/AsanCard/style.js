@@ -48,9 +48,8 @@ let AsanDelay = styled.div`
     border-radius: 10px;   
 `;
 
-let AsanComplexity = styled(AsanDelay)`
-    color: ${props => props.theme.complexity[props.complexity].color};
-    background-color: ${props => props.theme.complexity[props.complexity].backgroundColor};
+let AsanComplexity = AsanDelay.extend`
+    ${props => props.theme.complexity[props.complexity]}
 `;
 
 export {
