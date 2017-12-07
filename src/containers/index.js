@@ -9,16 +9,16 @@ let AppWrap = styled.div`
 const theme = {
     complexity: {
         light: {
-            color: 'black',
-            backgroundColor: 'lightgreen'
+            'color': 'black',
+            'background-color': 'lightgreen'
         },
         middle: {
-            color: 'black',
-            backgroundColor: 'coral'
+            'color': 'black',
+            'background-color': 'coral'
         },
         hard: {
-            color: 'white',
-            backgroundColor: 'crimson'
+            'color': 'white',
+            'background-color': 'crimson'
         }
     }
 }
