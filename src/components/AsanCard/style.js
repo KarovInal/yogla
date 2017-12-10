@@ -56,6 +56,14 @@ let AsanComplexity = AsanDelay.extend`
     ${props => props.theme.complexity[props.complexity]}
 `;
 
+let AsanStart = styled.button`
+    height: 30px;
+    font-weight: 900;
+    background-color: darkorange;
+    cursor: pointer;
+    border: none;
+`;
+
 export {
     AsanDetailsWrap,
     AsanPreviw,
@@ -63,5 +71,6 @@ export {
     AsanLabel,
     AsanDescription,
     AsanDelay,
-    AsanComplexity
+    AsanComplexity,
+    AsanStart
 };

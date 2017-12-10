@@ -8,7 +8,8 @@ import {
     AsanLabel,
     AsanDescription,
     AsanDelay,
-    AsanComplexity
+    AsanComplexity,
+    AsanStart
 } from './style.js';
 
 class AsanCard extends Component {
@@ -46,7 +47,8 @@ class AsanCard extends Component {
                 </AsanDetailsWrap>
                 <AsanLabel>{ label }</AsanLabel>
                 <AsanDescription>{ description }</AsanDescription>
-            </AsanCardWrap>
+                <AsanStart>Start</AsanStart>
+            </AsanCardWrap> 
         );
     }
 }
