@@ -4,20 +4,20 @@ import { createSelector } from 'reselect';
 
 import AsansCardList from 'components/AsansCardList';
 
-let getAsansCardList = (state) => state.asansCardList;
-let getAsansCardData = (state) => state.asansCardData;
-let getAsansData = (state) => state.asansData;
+let getAsansCardList = (state) => state.asanCardListId;
+let getAsansCardData = (state) => state.asanCardData;
+let getAsansData = (state) => state.asanData;
 
 let createAsansData = createSelector(
     [getAsansCardList, getAsansCardData, getAsansData],
-    (asansCardList, asansCardData, asansData) => {
-        return asansCardList.map(cardId => {
+    (asanCardListId, asanCardData, asanData) => {
+        return asanCardListId.map(cardId => {
             return {
-                ...asansCardData[cardId],
-                asans: asansCardData[cardId].asans.map(asanItem => {
+                ...asanCardData[cardId],
+                asans: asanCardData[cardId].asans.map(asanItem => {
                     return {
                         ...asanItem,
-                        ...asansData[asanItem.id]
+                        ...asanData[asanItem.id]
                     }
                 })
             }

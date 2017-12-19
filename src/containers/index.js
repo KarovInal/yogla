@@ -1,12 +1,6 @@
 import React from 'react';
-import styled, { ThemeProvider, injectGlobal } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import AsansCardList from './AsansCardList';
-
-injectGlobal`
-    body {
-        font-family: Comfortaa;
-    }
-`;
 
 const theme = {
     complexity: {

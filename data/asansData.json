@@ -1,8 +1,8 @@
 {
-    "asansCardList": [
+    "asanCardListId": [
         11
     ],
-    "asansCardData": {
+    "asanCardData": {
         "11": {
             "id": 11,
             "labelCard": "Yogla для начинающих",
@@ -22,7 +22,7 @@
             ]
         }
     },
-    "asansData": {
+    "asanData": {
         "21": {
             "id": 21,
             "titleAsan": "Собака мордой вниз",

@@ -8,10 +8,10 @@ class AsansCardList extends Component {
     static propTypes = {
         cardListData: PropTypes.arrayOf(PropTypes.shape({
             id: PropTypes.number.isRequired,
-            label: PropTypes.string.isRequired,
-            description: PropTypes.string.isRequired,
-            complexity: PropTypes.string.isRequired,
-            totalTime: PropTypes.number.isRequired,
+            labelCard: PropTypes.string.isRequired,
+            descriptionCard: PropTypes.string.isRequired,
+            complexityCard: PropTypes.string.isRequired,
+            totalTimeCard: PropTypes.number.isRequired,
             asanas: PropTypes.arrayOf(PropTypes.shape({
                 titleAsan: PropTypes.string.isRequired,
                 descriptionAsan: PropTypes.string.isRequired,
