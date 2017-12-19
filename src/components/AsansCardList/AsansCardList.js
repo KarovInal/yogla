@@ -1,20 +1,80 @@
 import React, { Component } from 'react';
-import AsanCard from '../AsanCard';
+import PropTypes from 'prop-types';
 
-import AsansData from 'Data/asansData.json';
+import AsanCard from '../AsanCard';
+import AsanPlayer from 'components/AsansPlayer';
 
 class AsansCardList extends Component {
+    static propTypes = {
+        cardListData: PropTypes.arrayOf(PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            label: PropTypes.string.isRequired,
+            description: PropTypes.string.isRequired,
+            complexity: PropTypes.string.isRequired,
+            totalTime: PropTypes.number.isRequired,
+            asanas: PropTypes.arrayOf(PropTypes.shape({
+                titleAsan: PropTypes.string.isRequired,
+                descriptionAsan: PropTypes.string.isRequired,
+                imageAsan: PropTypes.string.isRequired,
+                iconAsan: PropTypes.string.isRequired,
+                voiceAsan: PropTypes.string.isRequired,
+                delayAsan: PropTypes.number.isRequired
+            }))
+        })).isRequired
+    };
+
+    static childContextTypes = {
+        onPickedAsan: PropTypes.func
+    };
+
+    getChildContext() {
+        return {
+            onPickedAsan: this.onPickedAsan
+        }
+    };
+    
+    state = {
+        pickedAsan: null
+    };
+
     generateListAsans() {
-        return AsansData.map(asansGroup => 
+        let { cardListData } = this.props;
+
+        return cardListData.map(asansGroup => 
             <AsanCard key={asansGroup.id} {...asansGroup} />
         );
-    }
+    };
+
+    generateAsanPlayer() {
+        let { pickedAsan } = this.state;
+        let { cardListData } = this.props;
+
+        if(!pickedAsan) return null;
+
+        let asanCardObject = cardListData.filter(({id}) => id == pickedAsan)[0];
+
+        return (
+            <AsanPlayer {...asanCardObject}/>
+        )
+    };
+
+    onPickedAsan = (id) => {
+        this.setState(prevState => {
+            return {
+                ...prevState,
+                pickedAsan: id
+            }
+        })
+    };
+
     render() {
         let ListAsans = this.generateListAsans();
-        
+        let DisplayAsanPlayer = this.generateAsanPlayer();
+
         return (
             <div>
                 { ListAsans }
+                { DisplayAsanPlayer }
             </div>
         )
     }

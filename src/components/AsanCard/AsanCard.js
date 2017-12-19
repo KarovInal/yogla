@@ -29,14 +29,21 @@ class AsanCard extends Component {
         }))
     };
 
+    static contextTypes = {
+        onPickedAsan: PropTypes.func.isRequired
+    };
+    
     render() {
         let {
+            id,
             preview,
             label,
             description,
             complexity,
             totalTime
         } = this.props;
+
+        let { onPickedAsan } = this.context;
 
         return (
             <AsanCardWrap>
@@ -47,7 +54,7 @@ class AsanCard extends Component {
                 </AsanDetailsWrap>
                 <AsanLabel>{ label }</AsanLabel>
                 <AsanDescription>{ description }</AsanDescription>
-                <AsanStart>Start</AsanStart>
+                <AsanStart onClick={() => { onPickedAsan(id) }}>Start</AsanStart>
             </AsanCardWrap> 
         );
     }
