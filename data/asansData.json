@@ -5,11 +5,11 @@
     "asansCardData": {
         "11": {
             "id": 11,
-            "label": "Yogla для начинающих",
-            "description": "Набор упражнений для тех кто только начал практиковать йогу.",
-            "preview": "assets/img/yoga-beginner.jpg",
-            "complexity": "hard",
-            "totalTime": 25,
+            "labelCard": "Yogla для начинающих",
+            "descriptionCard": "Набор упражнений для тех кто только начал практиковать йогу.",
+            "previewCard": "assets/img/yoga-beginner.jpg",
+            "complexityCard": "hard",
+            "totalTimeCard": 25,
             "asans": [
                 {
                     "id": 21,
