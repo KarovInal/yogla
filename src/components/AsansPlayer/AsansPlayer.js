@@ -33,9 +33,12 @@ let Description = styled.p`
 
 export default class AsansPlayer extends Component {
     static propTypes = {
-        name: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
+        label: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,
-        asanas: PropTypes.arrayOf(
+        complexity: PropTypes.string.isRequired,
+        totalTime: PropTypes.number.isRequired,
+        asans: PropTypes.arrayOf(
             PropTypes.shape({
                 titleAsan: PropTypes.isRequired,
                 descriptionAsan: PropTypes.isRequired,
@@ -46,23 +49,18 @@ export default class AsansPlayer extends Component {
             })
         ).isRequired
     }
-    
-    state = {
-        isDisplay: true
-    }
 
     render() {
-        if(!this.state.isDisplay) return null;
-
         let {
-            name,
+            label,
             description,
             asanas
         } = this.props;
+
         return (
             <AsansContainer>
                 <AsansCard>
-                    <Label>{ name }</Label>
+                    <Label>{ label }</Label>
                     <Description>{ description }</Description>
                 </AsansCard>
             </AsansContainer>

@@ -1,26 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 
-let AsanCardWrap = styled.div`
-    width: 100%;
-    max-width: 250px;
-`;
-
-let AsanLabel = styled.p`
-    font-weight: bold;
-    font-size: 18px;
-`;
-
-let AsanDescription = styled.p`
-    font-weight: light;
-    font-size: 16px;
-`;
-
-let AsanComplexity = styled.div`
-    color: ${props => props.theme.complexity[props.complexity].color};
-    background-color: ${props => props.theme.complexity[props.complexity].backgroundColor}
-`
+import {
+    AsanDetailsWrap,
+    AsanPreviw,
+    AsanCardWrap,
+    AsanLabel,
+    AsanDescription,
+    AsanDelay,
+    AsanComplexity,
+    AsanStart
+} from './style.js';
 
 class AsanCard extends Component {
     static propTypes = {
@@ -39,19 +29,33 @@ class AsanCard extends Component {
         }))
     };
 
+    static contextTypes = {
+        onPickedAsan: PropTypes.func.isRequired
+    };
+    
     render() {
         let {
+            id,
+            preview,
             label,
             description,
-            complexity
+            complexity,
+            totalTime
         } = this.props;
+
+        let { onPickedAsan } = this.context;
 
         return (
             <AsanCardWrap>
+                <AsanPreviw preview={preview} />
+                <AsanDetailsWrap>
+                    <AsanComplexity complexity={complexity}>{ complexity }</AsanComplexity>
+                    <AsanDelay complexity={totalTime}>{ `${totalTime}m` }</AsanDelay>
+                </AsanDetailsWrap>
                 <AsanLabel>{ label }</AsanLabel>
                 <AsanDescription>{ description }</AsanDescription>
-                <AsanComplexity complexity={complexity}>{ complexity }</AsanComplexity>
-            </AsanCardWrap>
+                <AsanStart onClick={() => { onPickedAsan(id) }}>Start</AsanStart>
+            </AsanCardWrap> 
         );
     }
 }
