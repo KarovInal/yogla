@@ -3,12 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import DropDown from 'components/DropDown';
 
-const LIST_DATA = [
-  { label: 'Профиль', link: 'https://github.com/KarovInal' },
-  { label: 'Закладки', link: 'https://github.com/KarovInal?tab=stars' },
-  { label: 'Выход', link: '#' }
-]
-
 const UserWrapContainer = styled.div`
   display: flex;
   align-items: center;
@@ -48,19 +42,37 @@ const ComponentList = (({ label, link }) => {
   );
 });
 
-const HeaderUser = ({ user }) => {
-  return (
-    <UserWrapContainer>
-      <a target='_blank' href={user.link}>
-        <UserIcon src={user.icon} />
-      </a>
-      <DropDown componentList={ComponentList} listData={LIST_DATA} />
-    </UserWrapContainer>
-  );
-}
+function generateUserDropDown(user) {
+  const LIST_DATA = [
+    { label: 'Профиль', link: user.profile },
+    { label: 'Закладки', link: user.bookmarks },
+    { label: 'Выход', link: '#' }
+  ];
+
+  return LIST_DATA;
+};
+
+const HeaderUser = (props) => (
+  <UserWrapContainer>
+    <a target='_blank' href={props.profile}>
+      <UserIcon src={props.avatar} />
+    </a>
+    <DropDown componentList={ComponentList} listData={generateUserDropDown(props)} />
+  </ UserWrapContainer>
+);
 
 HeaderUser.propTypes = {
-  icon: PropTypes.string
-}
+  name: PropTypes.string,
+  profile: PropTypes.string,
+  avatar: PropTypes.string,
+  bookmarks: PropTypes.string
+};
+
+HeaderUser.defaultProps = {
+  name: 'user_none',
+  profile: 'profle_none',
+  avatar: 'https://cdn.shopify.com/s/files/1/1061/1924/products/Worried_Face_Emoji_12fa1bbf-0297-4818-8298-d6c1a588c341_large.png?v=1480481058',
+  bookmarks: 'bookmarks_none'
+};
 
 export default HeaderUser;

@@ -10,7 +10,7 @@ const POSITION = {
   bottomRight: { top: '100%', left: '0px' },
   topLeft:     { bottom: '100%', right: '0px' },
   topRight:    { bottom: '100%', left: '0px' },
-}
+};
 
 const DropDownWrap = styled.div`
   width: 20px;
