@@ -21,6 +21,7 @@ let AsanCardWrap = styled.div`
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 0px 0px 20px -5px rgba(255,140,0,0.2);
+    border: solid rgba(255,140,0,.3) 1px;
 
     &:hover {
         box-shadow: 0px 0px 20px -2px rgba(255,140,0,0.16);

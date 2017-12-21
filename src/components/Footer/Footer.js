@@ -33,7 +33,7 @@ const Author = styled.a.attrs({
 const Footer = () => (
   <FooterWrapContent>
     <DescriptionProject>
-      YOGLA - это приложения для занятия йогой. 
+      YOGLA - это приложение для занятия йогой. 
       Мы собрали лучшие подборки асан под разные тематики.
       Выбири подходящую подборку, и начни заниматься прямой сейчас!
     </DescriptionProject>

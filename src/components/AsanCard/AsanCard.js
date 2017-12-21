@@ -17,13 +17,13 @@ class AsanCard extends Component {
         id: PropTypes.number.isRequired,
         labelCard: PropTypes.string.isRequired,
         descriptionCard: PropTypes.string.isRequired,
-        descriptionCard: PropTypes.string.isRequired,
         previewCard: PropTypes.string.isRequired,
-        totalTimeCard: PropTypes.number.isRequired
+        totalTimeCard: PropTypes.number.isRequired,
+        onClickStart: PropTypes.func
     };
 
-    static contextTypes = {
-        onPickedAsan: PropTypes.func.isRequired
+    static defaultProps = {
+        onClickStart: new Function
     };
     
     render() {
@@ -33,7 +33,8 @@ class AsanCard extends Component {
             labelCard,
             descriptionCard,
             complexityCard,
-            totalTimeCard
+            totalTimeCard,
+            onClickStart
         } = this.props;
 
         return (
@@ -45,7 +46,7 @@ class AsanCard extends Component {
                 </AsanDetailsWrap>
                 <AsanLabel>{ labelCard }</AsanLabel>
                 <AsanDescription>{ descriptionCard }</AsanDescription>
-                <AsanStart>Start</AsanStart>
+                <AsanStart onClick={() => onClickStart(id)}>Start</AsanStart>
             </AsanCardWrap> 
         );
     }

@@ -15,7 +15,7 @@
             "id": 11,
             "labelCard": "Yogla для начинающих",
             "descriptionCard": "Набор упражнений для тех кто только начал практиковать йогу.",
-            "previewCard": "img/yoga-beginner.jpg",
+            "previewCard": "https://content.active.com/Assets/Active.com+Content+Site+Digital+Assets/Fitness/580x350/yoga-main.jpg",
             "complexityCard": "light",
             "totalTimeCard": 25,
             "asans": [
@@ -33,7 +33,7 @@
             "id": 12,
             "labelCard": "Yogla средний уровень",
             "descriptionCard": "Набор упражнений для среднего уровня.",
-            "previewCard": "img/yoga-beginner.jpg",
+            "previewCard": "http://static.journalistate.com/wp-content/uploads/2016/06/26113740/Sunset.jpg",
             "complexityCard": "middle",
             "totalTimeCard": 25,
             "asans": [
@@ -51,7 +51,7 @@
             "id": 13,
             "labelCard": "Yogla для профи",
             "descriptionCard": "Набор упражнений для тех кто давно практикует йогу.",
-            "previewCard": "img/yoga-beginner.jpg",
+            "previewCard": "http://www.bodyfitdenhelder.nl/files/Yoga.png",
             "complexityCard": "hard",
             "totalTimeCard": 25,
             "asans": [

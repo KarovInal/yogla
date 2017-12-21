@@ -36,16 +36,6 @@ class AsansCardList extends Component {
         })).isRequired
     };
 
-    static childContextTypes = {
-        onPickedAsan: PropTypes.func
-    };
-
-    getChildContext() {
-        return {
-            onPickedAsan: this.onPickedAsan
-        }
-    };
-
     state = {
         pickedAsan: null
     };
@@ -54,7 +44,7 @@ class AsansCardList extends Component {
         let { cardListData } = this.props;
 
         return cardListData.map(asansGroup =>
-            <AsanCard key={asansGroup.id} {...asansGroup} />
+            <AsanCard key={asansGroup.id} {...asansGroup} onClickStart={this.onPickedAsan}/>
         );
     };
 

@@ -6,6 +6,8 @@ import HeaderSearch from './components/HeaderSearch';
 import HeaderUser from './components/HeaderUser';
 import HeaderLogin from './components/HeaderLogin';
 
+import logo from './assets/img/logo.png';
+
 const HeaderWrapContent = styled.div`
   display: flex;
   justify-content: center;
@@ -34,10 +36,16 @@ const HeaderLogo = styled.a.attrs({
   text-shadow: 0 0 3px black;
 `;
 
+const Logo = styled.img`
+  height: 25px;
+  vertical-align: sub;
+  margin-right: 5px;
+`;
+
 const Header = ({ user }) => (
   <HeaderWrapContent>
     <HeaderContent>
-      <HeaderLogo>Yogla.ru</HeaderLogo>
+      <HeaderLogo><Logo src={logo}/>Yogla.ru</HeaderLogo>
       <HeaderSearch />
       {
         user
