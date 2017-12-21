@@ -6,14 +6,52 @@
         "bookmarks": "https://github.com/KarovInal?tab=stars"
     },
     "asanCardListId": [
-        11
+        11,
+        12,
+        13
     ],
     "asanCardData": {
         "11": {
             "id": 11,
             "labelCard": "Yogla для начинающих",
             "descriptionCard": "Набор упражнений для тех кто только начал практиковать йогу.",
-            "previewCard": "assets/img/yoga-beginner.jpg",
+            "previewCard": "img/yoga-beginner.jpg",
+            "complexityCard": "light",
+            "totalTimeCard": 25,
+            "asans": [
+                {
+                    "id": 21,
+                    "delayAsan": 5000
+                },
+                {
+                    "id": 22,
+                    "delayAsan": 2000
+                }
+            ]
+        },
+        "12": {
+            "id": 12,
+            "labelCard": "Yogla средний уровень",
+            "descriptionCard": "Набор упражнений для среднего уровня.",
+            "previewCard": "img/yoga-beginner.jpg",
+            "complexityCard": "middle",
+            "totalTimeCard": 25,
+            "asans": [
+                {
+                    "id": 21,
+                    "delayAsan": 5000
+                },
+                {
+                    "id": 22,
+                    "delayAsan": 2000
+                }
+            ]
+        },
+        "13": {
+            "id": 13,
+            "labelCard": "Yogla для профи",
+            "descriptionCard": "Набор упражнений для тех кто давно практикует йогу.",
+            "previewCard": "img/yoga-beginner.jpg",
             "complexityCard": "hard",
             "totalTimeCard": 25,
             "asans": [

@@ -15,18 +15,11 @@ import {
 class AsanCard extends Component {
     static propTypes = {
         id: PropTypes.number.isRequired,
-        label: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired,
-        complexity: PropTypes.string.isRequired,
-        totalTime: PropTypes.number.isRequired,
-        asanas: PropTypes.arrayOf(PropTypes.shape({
-            titleAsan: PropTypes.string.isRequired,
-            descriptionAsan: PropTypes.string.isRequired,
-            imageAsan: PropTypes.string.isRequired,
-            iconAsan: PropTypes.string.isRequired,
-            voiceAsan: PropTypes.string.isRequired,
-            delayAsan: PropTypes.number.isRequired
-        }))
+        labelCard: PropTypes.string.isRequired,
+        descriptionCard: PropTypes.string.isRequired,
+        descriptionCard: PropTypes.string.isRequired,
+        previewCard: PropTypes.string.isRequired,
+        totalTimeCard: PropTypes.number.isRequired
     };
 
     static contextTypes = {
@@ -36,25 +29,23 @@ class AsanCard extends Component {
     render() {
         let {
             id,
-            preview,
-            label,
-            description,
-            complexity,
-            totalTime
+            previewCard,
+            labelCard,
+            descriptionCard,
+            complexityCard,
+            totalTimeCard
         } = this.props;
-
-        let { onPickedAsan } = this.context;
 
         return (
             <AsanCardWrap>
-                <AsanPreviw preview={preview} />
+                <AsanPreviw preview={previewCard} />
                 <AsanDetailsWrap>
-                    <AsanComplexity complexity={complexity}>{ complexity }</AsanComplexity>
-                    <AsanDelay complexity={totalTime}>{ `${totalTime}m` }</AsanDelay>
+                    <AsanComplexity complexity={complexityCard}>{ complexityCard }</AsanComplexity>
+                    <AsanDelay>{ `${ totalTimeCard }m` }</AsanDelay>
                 </AsanDetailsWrap>
-                <AsanLabel>{ label }</AsanLabel>
-                <AsanDescription>{ description }</AsanDescription>
-                <AsanStart onClick={() => { onPickedAsan(id) }}>Start</AsanStart>
+                <AsanLabel>{ labelCard }</AsanLabel>
+                <AsanDescription>{ descriptionCard }</AsanDescription>
+                <AsanStart>Start</AsanStart>
             </AsanCardWrap> 
         );
     }

@@ -1,25 +1,38 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import AsanCard from '../AsanCard';
 import AsanPlayer from 'components/AsansPlayer';
+
+const AsansCardListWrap = styled.div`
+    display: flex;
+    width: 100%;
+    align-items: center;
+    max-width: 1000px;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-center;
+`;
 
 class AsansCardList extends Component {
     static propTypes = {
         cardListData: PropTypes.arrayOf(PropTypes.shape({
             id: PropTypes.number.isRequired,
             labelCard: PropTypes.string.isRequired,
+            previewCard: PropTypes.string.isRequired,
             descriptionCard: PropTypes.string.isRequired,
             complexityCard: PropTypes.string.isRequired,
             totalTimeCard: PropTypes.number.isRequired,
-            asanas: PropTypes.arrayOf(PropTypes.shape({
+            asans: PropTypes.arrayOf(PropTypes.shape({
                 titleAsan: PropTypes.string.isRequired,
                 descriptionAsan: PropTypes.string.isRequired,
                 imageAsan: PropTypes.string.isRequired,
                 iconAsan: PropTypes.string.isRequired,
                 voiceAsan: PropTypes.string.isRequired,
                 delayAsan: PropTypes.number.isRequired
-            }))
+            })).isRequired
         })).isRequired
     };
 
@@ -32,7 +45,7 @@ class AsansCardList extends Component {
             onPickedAsan: this.onPickedAsan
         }
     };
-    
+
     state = {
         pickedAsan: null
     };
@@ -40,7 +53,7 @@ class AsansCardList extends Component {
     generateListAsans() {
         let { cardListData } = this.props;
 
-        return cardListData.map(asansGroup => 
+        return cardListData.map(asansGroup =>
             <AsanCard key={asansGroup.id} {...asansGroup} />
         );
     };
@@ -49,12 +62,12 @@ class AsansCardList extends Component {
         let { pickedAsan } = this.state;
         let { cardListData } = this.props;
 
-        if(!pickedAsan) return null;
+        if (!pickedAsan) return null;
 
-        let asanCardObject = cardListData.filter(({id}) => id == pickedAsan)[0];
+        let asanCardObject = cardListData.filter(({ id }) => id == pickedAsan)[0];
 
         return (
-            <AsanPlayer {...asanCardObject}/>
+            <AsanPlayer {...asanCardObject} />
         )
     };
 
@@ -72,10 +85,10 @@ class AsansCardList extends Component {
         let DisplayAsanPlayer = this.generateAsanPlayer();
 
         return (
-            <div>
-                { ListAsans }
-                { DisplayAsanPlayer }
-            </div>
+            <AsansCardListWrap>
+                {ListAsans}
+                {DisplayAsanPlayer}
+            </AsansCardListWrap>
         )
     }
 }

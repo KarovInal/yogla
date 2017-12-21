@@ -10,17 +10,20 @@ let AsanPreviw = styled.div`
 
 let AsanCardWrap = styled.div`
     width: 100%;
+    height: 425px;
     max-width: 250px;
+    margin: 15px;
     position: relative;
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
     background-color: ghostwhite;
     border-radius: 5px;
     overflow: hidden;
-    box-shadow: 0px 0px 20px -7px rgba(0,0,0,.5);
+    box-shadow: 0px 0px 20px -5px rgba(255,140,0,0.2);
 
     &:hover {
-        box-shadow: 0px 0px 20px -4px rgba(0,0,0,.5);
+        box-shadow: 0px 0px 20px -2px rgba(255,140,0,0.16);
     }
 `;
 
@@ -39,6 +42,7 @@ let AsanDescription = styled.p`
 let AsanDetailsWrap = styled.div`
     width: 100%;
     position: absolute;
+    top: 0;
     display: flex;
     align-items: flex-end;
     flex-direction: column;
