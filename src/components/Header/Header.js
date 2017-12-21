@@ -1,13 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import HeaderSearch from './components/HeaderSearch';
 import HeaderUser from './components/HeaderUser';
+import HeaderLogin from './components/HeaderLogin';
 
-const USER_INFO = {
-  icon: 'https://avatars1.githubusercontent.com/u/11422713?s=400&u=388b032b54b964dd80b28eb9ce3ac31e92226ea4&v=4',
-  link: 'https://github.com/KarovInal'
-};
+import logo from './assets/img/logo.png';
 
 const HeaderWrapContent = styled.div`
   display: flex;
@@ -37,16 +36,37 @@ const HeaderLogo = styled.a.attrs({
   text-shadow: 0 0 3px black;
 `;
 
-const Header = () => {
-  return (
-    <HeaderWrapContent>
-      <HeaderContent>
-        <HeaderLogo>Yogla.ru</HeaderLogo>
-        <HeaderSearch />
-        <HeaderUser user={USER_INFO}/>
-      </HeaderContent>
-    </HeaderWrapContent>
-  );
-}
+const Logo = styled.img`
+  height: 25px;
+  vertical-align: sub;
+  margin-right: 5px;
+`;
+
+const Header = ({ user }) => (
+  <HeaderWrapContent>
+    <HeaderContent>
+      <HeaderLogo><Logo src={logo}/>Yogla.ru</HeaderLogo>
+      <HeaderSearch />
+      {
+        user
+          ? <HeaderUser {...user} />
+          : <HeaderLogin />
+      }
+    </HeaderContent>
+  </HeaderWrapContent>
+);
+
+Header.propTypes = {
+  user: PropTypes.shape({
+    name: PropTypes.string,
+    profile: PropTypes.string,
+    avatar: PropTypes.string,
+    bookmarks: PropTypes.string
+  })
+};
+
+Header.defaultProps = {
+  user: null
+};
 
 export default Header;

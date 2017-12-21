@@ -34,34 +34,32 @@ let Description = styled.p`
 export default class AsansPlayer extends Component {
     static propTypes = {
         id: PropTypes.number.isRequired,
-        label: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired,
-        complexity: PropTypes.string.isRequired,
-        totalTime: PropTypes.number.isRequired,
-        asans: PropTypes.arrayOf(
-            PropTypes.shape({
-                titleAsan: PropTypes.isRequired,
-                descriptionAsan: PropTypes.isRequired,
-                imageAsan: PropTypes.isRequired,
-                iconAsan: PropTypes.isRequired,
-                voiceAsan: PropTypes.isRequired,
-                delayAsan: PropTypes.isRequired
-            })
-        ).isRequired
+        labelCard: PropTypes.string.isRequired,
+        previewCard: PropTypes.string.isRequired,
+        descriptionCard: PropTypes.string.isRequired,
+        complexityCard: PropTypes.string.isRequired,
+        totalTimeCard: PropTypes.number.isRequired,
+        asans: PropTypes.arrayOf(PropTypes.shape({
+            titleAsan: PropTypes.string.isRequired,
+            descriptionAsan: PropTypes.string.isRequired,
+            imageAsan: PropTypes.string.isRequired,
+            iconAsan: PropTypes.string.isRequired,
+            voiceAsan: PropTypes.string.isRequired,
+            delayAsan: PropTypes.number.isRequired
+        })).isRequired
     }
 
     render() {
         let {
-            label,
-            description,
-            asanas
+            labelCard,
+            descriptionCard
         } = this.props;
 
         return (
             <AsansContainer>
                 <AsansCard>
-                    <Label>{ label }</Label>
-                    <Description>{ description }</Description>
+                    <Label>{ labelCard }</Label>
+                    <Description>{ descriptionCard }</Description>
                 </AsansCard>
             </AsansContainer>
         )
