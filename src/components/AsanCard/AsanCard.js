@@ -46,7 +46,7 @@ class AsanCard extends Component {
                 </AsanDetailsWrap>
                 <AsanLabel>{ labelCard }</AsanLabel>
                 <AsanDescription>{ descriptionCard }</AsanDescription>
-                <AsanStart onClick={() => onClickStart(id)}>Start</AsanStart>
+                <AsanStart onClick={() => onClickStart(id)}>Начать</AsanStart>
             </AsanCardWrap> 
         );
     }

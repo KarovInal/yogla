@@ -29,7 +29,7 @@ const DropDownList = styled.div`
   background-color: gainsboro;
   border-radius: 4px;
   position: absolute;
-  z-index: 999;
+  z-index: 9;
   ${props => props.position}
 `;
 
