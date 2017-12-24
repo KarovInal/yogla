@@ -44,7 +44,7 @@ export default class AsansPlayer extends Component {
 
         return (
             <AsansPlayerWrap>
-                <Preview { ...this.props }/>
+                <Preview { ...this.props } />
             </AsansPlayerWrap>
         )
     }
