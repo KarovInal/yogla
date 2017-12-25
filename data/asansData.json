@@ -71,7 +71,7 @@
             "titleAsan": "Собака мордой вниз",
             "descriptionAsan": "Адхо Мукха Шванасана относится к позам йоги, снимающим усталость, возвращающим потерянную энергию. Она особенно полезна для бегунов, отдыхающих после забега.",
             "imageAsan": "https://s.hanuman.ru/files/imagecache/center_thumbnail_full/mukha_shvanasana_01_0.JPG",
-            "iconAsan": "https://image.flaticon.com/icons/svg/84/84717.svg",
+            "iconAsan": "img/asans/waist.svg",
             "voiceAsan": "voice.mp3"
         },
         "22": {
@@ -79,7 +79,23 @@
             "titleAsan": "БХАРАДВАДЖАСАНА II",
             "descriptionAsan": "Бхарадваджасана II относится к упражнениям йоги для «среднего» уровня. Она развивает гибкость позвоночника, коленей и плеч и только для людей с эластичным позвоночником она не очень эффективна.",
             "imageAsan": "https://s.hanuman.ru/files/imagecache/center_thumbnail_full/II.jpg",
-            "iconAsan": "https://image.flaticon.com/icons/svg/84/84717.svg",
+            "iconAsan": "img/asans/arms-up.svg",
+            "voiceAsan": "voice.mp3"
+        },
+        "23": {
+            "id": 23,
+            "titleAsan": "Поза 3",
+            "descriptionAsan": "Бхарадваджасана II относится к упражнениям йоги для «среднего» уровня. Она развивает гибкость позвоночника, коленей и плеч и только для людей с эластичным позвоночником она не очень эффективна.",
+            "imageAsan": "https://s.hanuman.ru/files/imagecache/center_thumbnail_full/II.jpg",
+            "iconAsan": "img/asans/pushups.svg",
+            "voiceAsan": "voice.mp3"
+        },
+        "24": {
+            "id": 24,
+            "titleAsan": "Поза 4",
+            "descriptionAsan": "Бхарадваджасана II относится к упражнениям йоги для «среднего» уровня. Она развивает гибкость позвоночника, коленей и плеч и только для людей с эластичным позвоночником она не очень эффективна.",
+            "imageAsan": "https://s.hanuman.ru/files/imagecache/center_thumbnail_full/II.jpg",
+            "iconAsan": "img/asans/man-laying-on-his-back-with-his-knees-on-his-chest.svg",
             "voiceAsan": "voice.mp3"
         }
     }

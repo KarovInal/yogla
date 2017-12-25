@@ -9,7 +9,6 @@ const AsansTotalInfoWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  align-self: flex-start;
   margin-top: 20px;
 `;
 
@@ -22,7 +21,6 @@ const InfoWrap = styled.div`
 const InfoLabel = styled.p`
   font-size: 12px;
   font-weight: 100;
-  color: rgba(255,255,255,.5);
 `;
 
 const InfoValue = styled.h2`

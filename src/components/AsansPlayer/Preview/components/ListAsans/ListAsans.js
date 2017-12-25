@@ -3,17 +3,17 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import AsansTotalInfo from './AsansTotalInfo';
+import AsansList from './AsansList';
 
 const ListAsansWrap = styled.div`
   width: 50%;
   height: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #fa8e0b;
-  color: white;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: #fefefe;
+  color: black;
   overflow-y: auto;
-  flex-wrap: wrap;
   padding: 10px;
   box-sizing: border-box;
 `;
@@ -45,6 +45,7 @@ class ListAsans extends Component {
     return (
       <ListAsansWrap>
         <AsansTotalInfo totalTime={totalTime} numberOfAsans={NUMBER_OF_ASANS} />
+        <AsansList asans={asans} />
       </ListAsansWrap>
     );
   }
