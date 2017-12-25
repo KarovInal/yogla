@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import up from './assets/img/up.png';
 import down from './assets/img/down.png';
 
 const POSITION = {
@@ -36,7 +35,9 @@ const DropDownList = styled.div`
 const DropDownControl = styled.div`
   width: 100%;
   height: 100%;
-  background-image: url(${props => props.isOpen ? up : down});
+  background-image: url(${down});
+  transform: rotate(${props => props.isOpen ? `180deg` : `0deg`});
+  transition: transform .2s;
   background-size: 20px;
   background-position: center;
   background-repeat: no-repeat;
