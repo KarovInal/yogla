@@ -2,37 +2,25 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-let AsansContainer = styled.div`
-    font-family: "Comfortaa";
-    background-color: rgba(0,0,0,.1);
+import Preview from './Preview';
+
+let AsansPlayerWrap = styled.div`
     position: fixed;
+    z-index: 99;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
+    overflow-y: auto;
+    background-color: rgba(0,0,0,.5);
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
 `;
 
-let AsansCard = styled.div`
-    display: flex;
-    flex-direction: column;
-    max-width: 900px;
-    width: 100%;
-`;
-
-let Label = styled.p`
-    font-size: 20px;
-`;
-
-let Description = styled.p`
-    font-size: 14px;
-`;
-
 export default class AsansPlayer extends Component {
     static propTypes = {
+        onClose: PropTypes.func,
         id: PropTypes.number.isRequired,
         labelCard: PropTypes.string.isRequired,
         previewCard: PropTypes.string.isRequired,
@@ -49,6 +37,10 @@ export default class AsansPlayer extends Component {
         })).isRequired
     }
 
+    handleClose = ({ target }) => {
+        if(this.wrapPlayer == target) this.props.onClose();
+    }
+
     render() {
         let {
             labelCard,
@@ -56,12 +48,9 @@ export default class AsansPlayer extends Component {
         } = this.props;
 
         return (
-            <AsansContainer>
-                <AsansCard>
-                    <Label>{ labelCard }</Label>
-                    <Description>{ descriptionCard }</Description>
-                </AsansCard>
-            </AsansContainer>
+            <AsansPlayerWrap innerRef={wrapPlayer => this.wrapPlayer = wrapPlayer} onClick={this.handleClose}>
+                <Preview { ...this.props } />
+            </AsansPlayerWrap>
         )
     }
 }

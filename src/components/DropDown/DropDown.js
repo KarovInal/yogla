@@ -29,7 +29,7 @@ const DropDownList = styled.div`
   background-color: gainsboro;
   border-radius: 4px;
   position: absolute;
-  z-index: 999;
+  z-index: 9;
   ${props => props.position}
 `;
 
@@ -57,6 +57,14 @@ class DropDown extends Component {
     position: 'bottomLeft'
   };
 
+  componentWillMount() {
+    document.addEventListener('click', this.handleClickOutside.bind(this), false);
+  }
+  
+  comopnentWillUnmount() {
+    document.removeEventListener('click', this.handleClickOutside, false);
+  }
+
   state = {
     isOpen: false
   };
@@ -65,6 +73,12 @@ class DropDown extends Component {
     this.setState(prevState => ({
       isOpen: !prevState.isOpen
     }));
+  }
+
+  handleClickOutside({ target }) {
+    if(!this.dropDownRef.contains(target)) this.setState({ isOpen: false });
+
+    return;
   }
 
   rendererListData() {
@@ -80,18 +94,16 @@ class DropDown extends Component {
     const rendererListData = this.rendererListData();
 
     return (
-      <div>
-        <DropDownWrap>
-          <DropDownControl onClick={this.handleControl} isOpen={isOpen}/>
-          {
-            isOpen
-              ? <DropDownList position={POSITION[position]}>
-                  { rendererListData }
-                </DropDownList>
-              : null
-          }
-        </DropDownWrap>
-      </div>
+      <DropDownWrap innerRef={dropDown => this.dropDownRef = dropDown}>
+        <DropDownControl onClick={this.handleControl} isOpen={isOpen}/>
+        {
+          isOpen
+            ? <DropDownList position={POSITION[position]}>
+                { rendererListData }
+              </DropDownList>
+            : null
+        }
+      </DropDownWrap>
     );
   }
 }

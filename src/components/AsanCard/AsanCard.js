@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import timeConversion from 'utils/timeConversion';
+
 import {
     AsanDetailsWrap,
     AsanPreviw,
@@ -42,11 +44,11 @@ class AsanCard extends Component {
                 <AsanPreviw preview={previewCard} />
                 <AsanDetailsWrap>
                     <AsanComplexity complexity={complexityCard}>{ complexityCard }</AsanComplexity>
-                    <AsanDelay>{ `${ totalTimeCard }m` }</AsanDelay>
+                    <AsanDelay>{ timeConversion(totalTimeCard) }</AsanDelay>
                 </AsanDetailsWrap>
                 <AsanLabel>{ labelCard }</AsanLabel>
                 <AsanDescription>{ descriptionCard }</AsanDescription>
-                <AsanStart onClick={() => onClickStart(id)}>Start</AsanStart>
+                <AsanStart onClick={() => onClickStart(id)}>Начать</AsanStart>
             </AsanCardWrap> 
         );
     }

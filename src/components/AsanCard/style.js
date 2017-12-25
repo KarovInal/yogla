@@ -51,6 +51,7 @@ let AsanDetailsWrap = styled.div`
 
 let AsanDelay = styled.div`
     color: black;
+    font-size: 14px;
     background-color: khaki;
     padding: 2px 5px;
     margin: 3px 3px;

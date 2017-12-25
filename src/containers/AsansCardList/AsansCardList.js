@@ -14,6 +14,7 @@ let createAsansData = createSelector(
         return asanCardListId.map(cardId => {
             return {
                 ...asanCardData[cardId],
+                totalTimeCard: asanCardData[cardId].asans.reduce((totalTime, asanItem) => asanItem.delayAsan + totalTime, 0),
                 asans: asanCardData[cardId].asans.map(asanItem => {
                     return {
                         ...asanItem,
