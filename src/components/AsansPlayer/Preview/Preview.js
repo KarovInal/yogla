@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import {
-  ListAsans,
-  DescriptionAsans
-} from './components';
+import ListAsans from './ListAsans';
+import DescriptionAsans from './DescriptionAsans';
 
 const PreviewContentWrap = styled.div`
   width: 100%;
