@@ -2,27 +2,40 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import timeConversion from 'utils/timeConversion';
+
 const AsanItemWrap = styled.div`
     display: flex;
     align-items: center;
     width: 100%;
-    margin: 5px 0px;
-    background-color: #eee;
+    margin: 10px 0px;
+    padding: 3px;
+    box-sizing: border-box;
+    background-color: #fefefe;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px -6px #474747;
+    cursor: pointer;
+    transition: all .2s;
+
+    &:hover {
+        box-shadow: 0 5px 20px -6px #474747;
+    }
 `;
 
 const AsanImage = styled.img`
-    height: 20px;
+    height: 30px;
     width: auto;
+    margin: 0 10px;
 `;
 
 const AsanInfoWrap = styled.div`
     display: flex;
     flex-direction: column;
-    margin-left: 10px;
 `;
 
 const AsanLabel = styled.p`
     font-size: 16px;
+    font-weight: bolder;
 `;
 
 const AsanTime = styled.p`
@@ -36,7 +49,7 @@ function AsanItem({ iconAsan, titleAsan, delayAsan }) {
             <AsanImage src={ iconAsan } />
             <AsanInfoWrap>
                 <AsanLabel>{ titleAsan }</AsanLabel>
-                <AsanTime>{ delayAsan }</AsanTime>
+                <AsanTime>{ timeConversion(delayAsan) }</AsanTime>
             </AsanInfoWrap>
         </AsanItemWrap>
     );

@@ -9,7 +9,7 @@ const AsansTotalInfoWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 10px;
 `;
 
 const InfoWrap = styled.div`

@@ -3,19 +3,27 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import AsansTotalInfo from './AsansTotalInfo';
-import AsansList from './AsansList';
+import AsanItem from './AsanItem';
 
-const ListAsansWrap = styled.div`
+const WrapAsansList = styled.div`
   width: 50%;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  background-color: #fefefe;
+  background-color: #ffc87e;
   color: black;
   overflow-y: auto;
   padding: 10px;
   box-sizing: border-box;
+`;
+
+const AsansList = styled.div`
+    width: 100%;
+    margin-top: 20px;
+    padding-bottom: 10px;
+    overflow: hidden;
+    overflow-y: auto;
 `;
 
 class ListAsans extends Component {
@@ -41,12 +49,19 @@ class ListAsans extends Component {
     let { asans, totalTime } = this.props;
 
     const NUMBER_OF_ASANS = asans.length;
+    const LIST_OF_ASANS = asans.map(asan => (
+        <AsanItem key={asan.id} {...asan} />
+    ));
 
     return (
-      <ListAsansWrap>
+      <WrapAsansList>
         <AsansTotalInfo totalTime={totalTime} numberOfAsans={NUMBER_OF_ASANS} />
-        <AsansList asans={asans} />
-      </ListAsansWrap>
+        <AsansList>
+            {
+                LIST_OF_ASANS
+            }
+        </AsansList>
+      </WrapAsansList>
     );
   }
 }

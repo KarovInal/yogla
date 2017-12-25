@@ -20,11 +20,19 @@
             "asans": [
                 {
                     "id": 21,
-                    "delayAsan": 5000
+                    "delayAsan": 200000
                 },
                 {
                     "id": 22,
-                    "delayAsan": 2000
+                    "delayAsan": 100000
+                },
+                {
+                    "id": 23,
+                    "delayAsan": 500000
+                },
+                {
+                    "id": 24,
+                    "delayAsan": 400000
                 }
             ]
         },

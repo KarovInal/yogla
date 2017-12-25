@@ -20,6 +20,7 @@ let AsansPlayerWrap = styled.div`
 
 export default class AsansPlayer extends Component {
     static propTypes = {
+        onClose: PropTypes.func,
         id: PropTypes.number.isRequired,
         labelCard: PropTypes.string.isRequired,
         previewCard: PropTypes.string.isRequired,
@@ -36,6 +37,10 @@ export default class AsansPlayer extends Component {
         })).isRequired
     }
 
+    handleClose = ({ target }) => {
+        if(this.wrapPlayer == target) this.props.onClose();
+    }
+
     render() {
         let {
             labelCard,
@@ -43,7 +48,7 @@ export default class AsansPlayer extends Component {
         } = this.props;
 
         return (
-            <AsansPlayerWrap>
+            <AsansPlayerWrap innerRef={wrapPlayer => this.wrapPlayer = wrapPlayer} onClick={this.handleClose}>
                 <Preview { ...this.props } />
             </AsansPlayerWrap>
         )

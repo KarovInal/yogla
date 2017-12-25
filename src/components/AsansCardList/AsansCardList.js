@@ -57,7 +57,7 @@ class AsansCardList extends Component {
         let asanCardObject = cardListData.filter(({ id }) => id == pickedAsan)[0];
 
         return (
-            <AsanPlayer {...asanCardObject} />
+            <AsanPlayer onClose={() => this.onPickedAsan(null)} {...asanCardObject} />
         )
     };
 
