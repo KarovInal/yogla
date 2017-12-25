@@ -37,12 +37,23 @@ class Preview extends Component {
   }
 
   render() {
-    const { asans, totalTimeCard } = this.props;
+    const { 
+      asans, 
+      totalTimeCard, 
+      labelCard, 
+      descriptionCard,
+      previewCard } = this.props;
+    
+    const DESCRIPTION_PROPS = {
+      labelCard,
+      previewCard,
+      descriptionCard
+    };
 
     return (
       <PreviewContentWrap>
         <ListAsans asans={ asans } totalTime={totalTimeCard} />
-        <DescriptionAsans />
+        <DescriptionAsans { ...DESCRIPTION_PROPS } />
       </PreviewContentWrap>
     );
   }
