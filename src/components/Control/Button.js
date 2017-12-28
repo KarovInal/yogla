@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const noop = () => {};
+
 const ButtonStyle = styled.button`
   display: flex;
   align-items: center;
@@ -16,7 +18,7 @@ const ButtonStyle = styled.button`
 `;
 
 const Button = ({ isEnabled, onClick, children }) =>
-  <ButtonStyle isEnabled={ isEnabled } onClick={ onClick }>
+  <ButtonStyle isEnabled={ isEnabled } onClick={ isEnabled ? onClick : noop }>
     { children }
   </ButtonStyle>
 

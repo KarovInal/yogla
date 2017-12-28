@@ -75,8 +75,6 @@ class Player extends Component {
       }
     });
 
-    console.log(slides[currentSlideId].delay);
-
     this.timer.start(slides[currentSlideId].delay / 1000);
   }
 
@@ -173,8 +171,42 @@ class Player extends Component {
     this.timer.stop();
   }
 
+  onPlay = (isPlay) => {
+    this.setState({
+      isPlay
+    });
+
+    if(isPlay) {
+      this.playSlide();
+    } else {
+      this.pauseSlide();
+    }
+  }
+
+  checkNext = () => {
+    const { slidesById } = this.props;
+    const { currentSlideId } = this.state;
+
+    if(slidesById[currentSlideId].next == undefined) {
+      return false;
+    }
+
+    return true;
+  }
+
+  checkPrev = () => {
+    const { slidesById } = this.props;
+    const { currentSlideId } = this.state;
+
+    if(slidesById[currentSlideId].prev == undefined) {
+      return false;
+    }
+
+    return true;
+  }
+
   render() {
-    const { Slide, slides } = this.props;
+    const { Slide, slides, slidesById } = this.props;
     const {
       currentSlideId,
       tickNumber,
@@ -191,7 +223,14 @@ class Player extends Component {
 
         <Slide {...slides[currentSlideId]} />
 
-        <Control onPlay = { this.startSlide } />
+        <Control 
+          onPlay = { this.onPlay }
+          isPlay = { isPlay }
+          isPlayable = { true }
+          onNext = { this.onClickNextSlide }
+          hasNext = { this.checkNext() }
+          onPrev = { this.onClickPrevSlide }
+          hasPrev = { this.checkPrev() }/>
       </PlayerContentWrap>
     );
   }
