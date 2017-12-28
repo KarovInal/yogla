@@ -81,7 +81,8 @@ class DescriptionAsans extends Component {
   static propTypes = {
     labelCard: PropTypes.string,
     previewCard: PropTypes.string,
-    descriptionCard: PropTypes.string
+    descriptionCard: PropTypes.string,
+    handlePlay: PropTypes.func
   };
 
   static defaultProps = {
@@ -90,14 +91,14 @@ class DescriptionAsans extends Component {
   }
 
   render() {
-    const { labelCard, descriptionCard, previewCard } = this.props;
+    const { labelCard, descriptionCard, previewCard, handlePlay } = this.props;
 
     return (
       <DescriptionAsansWrap previewCard={ previewCard }>
         <DescriptionContentWrap>
           <Label>{ labelCard }</Label>
           <Description>{ descriptionCard }</Description>
-          <Play />
+          <Play onClick={ handlePlay }/>
         </DescriptionContentWrap>
       </DescriptionAsansWrap>
     );

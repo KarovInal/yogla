@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Preview from './Preview';
+import Player from './Player';
+import Slide from './Slide';
 
 let AsansPlayerWrap = styled.div`
     position: fixed;
@@ -21,6 +23,7 @@ let AsansPlayerWrap = styled.div`
 export default class AsansPlayer extends Component {
     static propTypes = {
         onClose: PropTypes.func,
+        handlePlay: PropTypes.func,
         id: PropTypes.number.isRequired,
         labelCard: PropTypes.string.isRequired,
         previewCard: PropTypes.string.isRequired,
@@ -37,6 +40,16 @@ export default class AsansPlayer extends Component {
         })).isRequired
     }
 
+    state = {
+        isPlay: false
+    }
+
+    handlePlay = () => {
+        this.setState({
+            isPlay: true
+        })
+    }
+
     handleClose = ({ target }) => {
         if(this.wrapPlayer == target) this.props.onClose();
     }
@@ -44,12 +57,19 @@ export default class AsansPlayer extends Component {
     render() {
         let {
             labelCard,
-            descriptionCard
+            descriptionCard,
+            asans
         } = this.props;
+
+        const IS_PLAY = this.state.isPlay;
 
         return (
             <AsansPlayerWrap innerRef={wrapPlayer => this.wrapPlayer = wrapPlayer} onClick={this.handleClose}>
-                <Preview { ...this.props } />
+                {
+                    IS_PLAY
+                        ? <Player slides={asans} Slide={Slide} />
+                        : <Preview { ...this.props } handlePlay={this.handlePlay} />
+                }
             </AsansPlayerWrap>
         )
     }
