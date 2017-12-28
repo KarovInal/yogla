@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Timer from 'timer.js';
+import Preload from './Preload';
 
 import Control from 'components/Control';
 
@@ -19,20 +20,6 @@ const PlayerContentWrap = styled.div`
   overflow: hidden;
 `;
 
-const PreloadTimer = styled.div`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: white;
-  color: black;
-  position: absolute;
-  top: 50%;
-  margin-top: -25px;
-  line-height: 50px;
-  text-align: center;
-  font-size: 20px;
-`;
-
 class Player extends Component {
   static propTypes = {
     startBy: PropTypes.number,
@@ -45,32 +32,32 @@ class Player extends Component {
   }
 
   componentDidMount() {
-    this.preloadTimer();
-  }
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isPlay: true,
-      currentSlideId: this.props.startBy,
-      isPreloadTimer: true,
-      tickNumber: 1
-    };
+    this.startTimerPreload();
   }
 
   componentWillUnmount() {
     this.clearTimer();
   }
 
-  startSlide = () => {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isPlay: false,
+      currentSlideId: this.props.startBy,
+      isPreloadTimer: true,
+      tickNumber: 3
+    };
+  }
+
+  startTimerSlide = () => {
     const { currentSlideId } = this.state;
     const { slides } = this.props;
 
     this.timer = new Timer({
       onend: () => {
         if(this.nextSlide()) {
-          this.startSlide();
+          this.startTimerSlide();
         }
       }
     });
@@ -78,41 +65,54 @@ class Player extends Component {
     this.timer.start(slides[currentSlideId].delay / 1000);
   }
 
-  preloadTimer = () => {
+  startTimerPreload = () => {
     this.timer = new Timer({
       tick: 1,
       ontick: this.onTick,
-      onend: this.preloadTimerEnd
+      onend: this.endTimerPreload
     });
 
-    this.timer.start(3);
+    if(this.state.isPlay) {
+      this.timer.start(3);
 
-    this.setState({
-      isPreloadTimer: true,
-      tickNumber: 1,
-      isPlay: true
-    })
+      this.setState({
+        isPreloadTimer: true,
+        tickNumber: 3,
+        isPlay: true
+      });
+    } else {
+      this.setState({
+        isPreloadTimer: true,
+        tickNumber: 3,
+        isPlay: false
+      });
+    }
   }
 
-  preloadTimerEnd = () => {
+  endTimerPreload = () => {
     this.setState({
-      tickNumber: 1,
+      tickNumber: 3,
       isPreloadTimer: false,
       isPlay: true
     });
 
-    this.startSlide();
+    this.startTimerSlide();
   }
 
   onTick = () => {
     let { tickNumber } = this.state;
 
     this.setState({
-      tickNumber: tickNumber + 1
+      tickNumber: tickNumber - 1
     });
   }
 
   playSlide = () => {
+    if(this.state.isPreloadTimer) {
+      this.timer.start(3);
+      return;
+    }
+
     this.timer.start();
     this.setState({
       isPlay: true
@@ -155,14 +155,14 @@ class Player extends Component {
   onClickNextSlide = () => {
     if(this.nextSlide()) {
       this.clearTimer();
-      this.preloadTimer();
+      this.startTimerPreload();
     }
   }
 
   onClickPrevSlide = () => {
     if(this.prevSlide()){
       this.clearTimer();
-      this.preloadTimer();
+      this.startTimerPreload();
     }
   }
 
@@ -217,7 +217,7 @@ class Player extends Component {
       <PlayerContentWrap>
         {
           isPreloadTimer
-            ? <PreloadTimer>{ tickNumber }</PreloadTimer>
+            ? <Preload>{ tickNumber }</Preload>
             : null
         }
 
