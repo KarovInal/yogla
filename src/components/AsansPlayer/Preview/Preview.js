@@ -33,7 +33,8 @@ class Preview extends Component {
       iconAsan: PropTypes.string.isRequired,
       voiceAsan: PropTypes.string.isRequired,
       delayAsan: PropTypes.number.isRequired
-    })).isRequired
+    })).isRequired,
+    handlePlay: PropTypes.func.isRequired
   }
 
   render() {
@@ -42,12 +43,14 @@ class Preview extends Component {
       totalTimeCard, 
       labelCard, 
       descriptionCard,
-      previewCard } = this.props;
+      previewCard,
+      handlePlay } = this.props;
     
     const DESCRIPTION_PROPS = {
       labelCard,
       previewCard,
-      descriptionCard
+      descriptionCard,
+      handlePlay
     };
 
     return (

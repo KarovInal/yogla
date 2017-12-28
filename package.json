@@ -16,6 +16,7 @@
     "react-redux": "^5.0.6",
     "redux-logger": "^3.0.6",
     "styled-components": "^2.2.3",
+    "timer.js": "^1.0.4",
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.9.4"
   },

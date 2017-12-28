@@ -37,7 +37,7 @@ class AsansCardList extends Component {
     };
 
     state = {
-        pickedAsan: null
+        pickedAsan: 11
     };
 
     generateListAsans() {
@@ -76,8 +76,8 @@ class AsansCardList extends Component {
 
         return (
             <AsansCardListWrap>
-                {ListAsans}
-                {DisplayAsanPlayer}
+                { ListAsans }
+                { DisplayAsanPlayer }
             </AsansCardListWrap>
         )
     }
