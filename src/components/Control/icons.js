@@ -8,13 +8,14 @@ export const PlayIcon = () =>
   </svg>
 
 export const PauseIcon = () =>
-  <svg height="15px" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 357 357">
-    <path d="M25.5,357h102V0h-102V357z M229.5,0v357h102V0H229.5z"/>
+  <svg width="15" height="15">
+    <rect x="0" y="0" width="5" height="15" fill="black" />
+    <rect x="10" y="0" width="5" height="15" fill="black" />
   </svg>
 
 export const StopIcon = () =>
-  <svg height="15px" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
-    <path d="M35,0H1C0.448,0,0,0.447,0,1v34c0,0.553,0.448,1,1,1h34c0.552,0,1-0.447,1-1V1C36,0.447,35.552,0,35,0z" />
+  <svg height="15" width="15">
+    <rect rx="2" ry="2" width="15" height="15" fill="black" />
   </svg>
 
 export const NextIcon = () =>

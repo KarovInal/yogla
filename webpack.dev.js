@@ -1,9 +1,10 @@
+require("babel-polyfill");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-
 const extractCSS = new ExtractTextPlugin('css/style.css');
 
 module.exports = {
   entry: {
+    polyfill: "babel-polyfill",
     app: './src/app.js'
   },
 

@@ -38,7 +38,7 @@ const theme = {
 render(
   <Provider store={ store }>
     <ThemeProvider theme={theme}>
-      <Home />  
+      <Home />
     </ThemeProvider>
   </Provider>,
   document.getElementById('app')
