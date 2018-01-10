@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Timer from 'timer.js';
+import Preload from './Preload';
+import { Line } from 'rc-progress';
 
 import Control from 'components/Control';
+
+const PRELOAD_TIMER = 3;
 
 const PlayerContentWrap = styled.div`
   width: 100%;
@@ -19,20 +23,6 @@ const PlayerContentWrap = styled.div`
   overflow: hidden;
 `;
 
-const PreloadTimer = styled.div`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: white;
-  color: black;
-  position: absolute;
-  top: 50%;
-  margin-top: -25px;
-  line-height: 50px;
-  text-align: center;
-  font-size: 20px;
-`;
-
 class Player extends Component {
   static propTypes = {
     startBy: PropTypes.number,
@@ -45,32 +35,35 @@ class Player extends Component {
   }
 
   componentDidMount() {
-    this.preloadTimer();
-  }
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isPlay: true,
-      currentSlideId: this.props.startBy,
-      isPreloadTimer: true,
-      tickNumber: 1
-    };
+    this.startTimerPreload();
   }
 
   componentWillUnmount() {
     this.clearTimer();
   }
 
-  startSlide = () => {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isPlay: false,
+      percent: 0,
+      currentSlideId: this.props.startBy,
+      isPreloadTimer: true,
+      tickNumber: 1
+    };
+  }
+
+  startTimerSlide = () => {
     const { currentSlideId } = this.state;
     const { slides } = this.props;
 
     this.timer = new Timer({
+      tick: 1,
+      ontick: this.onTick,
       onend: () => {
         if(this.nextSlide()) {
-          this.startSlide();
+          this.startTimerSlide();
         }
       }
     });
@@ -78,30 +71,40 @@ class Player extends Component {
     this.timer.start(slides[currentSlideId].delay / 1000);
   }
 
-  preloadTimer = () => {
+  startTimerPreload = () => {
     this.timer = new Timer({
       tick: 1,
       ontick: this.onTick,
-      onend: this.preloadTimerEnd
+      onend: this.endTimerPreload
     });
 
-    this.timer.start(3);
+    if(this.state.isPlay) {
+      this.timer.start(PRELOAD_TIMER);
 
-    this.setState({
-      isPreloadTimer: true,
-      tickNumber: 1,
-      isPlay: true
-    })
+      this.setState({
+        isPreloadTimer: true,
+        tickNumber: 1,
+        isPlay: true
+      });
+    } else {
+      this.setState({
+        isPreloadTimer: true,
+        tickNumber: 1,
+        isPlay: false
+      });
+    }
   }
 
-  preloadTimerEnd = () => {
+  endTimerPreload = () => {
+    const { tickNumber } = this.state;
+
     this.setState({
       tickNumber: 1,
       isPreloadTimer: false,
       isPlay: true
     });
 
-    this.startSlide();
+    this.startTimerSlide();
   }
 
   onTick = () => {
@@ -113,6 +116,11 @@ class Player extends Component {
   }
 
   playSlide = () => {
+    if(this.state.isPreloadTimer) {
+      this.timer.start(PRELOAD_TIMER);
+      return;
+    }
+
     this.timer.start();
     this.setState({
       isPlay: true
@@ -133,7 +141,8 @@ class Player extends Component {
     const NEXT_SLIDE_ID = slidesById[currentSlideId].next || currentSlideId;
 
     this.setState(prevState => ({
-      currentSlideId: NEXT_SLIDE_ID
+      currentSlideId: NEXT_SLIDE_ID,
+      tickNumber: 1
     }));
 
     return !(NEXT_SLIDE_ID == currentSlideId);
@@ -146,7 +155,8 @@ class Player extends Component {
     const PREV_SLIDE_ID = slidesById[currentSlideId].prev || currentSlideId;
 
     this.setState({
-      currentSlideId: PREV_SLIDE_ID
+      currentSlideId: PREV_SLIDE_ID,
+      tickNumber: 1
     })
 
     return !(PREV_SLIDE_ID == currentSlideId);
@@ -155,14 +165,14 @@ class Player extends Component {
   onClickNextSlide = () => {
     if(this.nextSlide()) {
       this.clearTimer();
-      this.preloadTimer();
+      this.startTimerPreload();
     }
   }
 
   onClickPrevSlide = () => {
     if(this.prevSlide()){
       this.clearTimer();
-      this.preloadTimer();
+      this.startTimerPreload();
     }
   }
 
@@ -208,18 +218,24 @@ class Player extends Component {
   render() {
     const { Slide, slides, slidesById } = this.props;
     const {
-      currentSlideId,
+      isPlay,
       tickNumber,
       isPreloadTimer,
-      isPlay } = this.state;
+      currentSlideId } = this.state;
+
+    const TIME = isPreloadTimer
+                  ? PRELOAD_TIMER
+                  : slides[currentSlideId].delay / 1000;
+
+    const percent = (tickNumber * 100) / TIME;
 
     return (
       <PlayerContentWrap>
         {
-          isPreloadTimer
-            ? <PreloadTimer>{ tickNumber }</PreloadTimer>
-            : null
+          isPreloadTimer && <Preload>{ tickNumber }</Preload>
         }
+
+        <Line percent={percent} />
 
         <Slide {...slides[currentSlideId]} />
 

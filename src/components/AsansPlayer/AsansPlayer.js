@@ -41,7 +41,7 @@ export default class AsansPlayer extends Component {
     }
 
     state = {
-        isPlay: false
+        isPlay: true
     }
 
     handlePlay = () => {
